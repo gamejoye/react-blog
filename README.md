@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# GameJoye.top 网站
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+欢迎来到 GameJoye.top，这是一个个人博客网站，包含博客展示页面以及一个完整的后台管理系统。
 
-## Available Scripts
+## 站点链接
 
-In the project directory, you can run:
+- **主页**：[https://gamejoye.top](https://gamejoye.top)
+- **后台管理**：[https://gamejoye.top:5173](https://gamejoye.top:5173)
 
-### `npm start`
+## 技术栈
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+本站点使用以下技术构建：
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React**：用于构建用户界面的 JavaScript 库。
+- **Ant Design (antd)**：一套优秀的 UI 设计语言和 React 实现。
+- **Redux**：用于状态管理。
+- **React Router v6**：用于页面路由管理。
 
-### `npm test`
+## 功能
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **博客展示**：展示博客文章给访问者阅读。
+- **后台管理**：支持文章、分类、文件夹等信息的管理功能。
+- **主题切换**：支持不同主题的切换以提供不同的视觉体验。
+- **代码规范**：使用 Prettier 工具来维护代码风格的一致性。
 
-### `npm run build`
+## 代码逻辑
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+对于博客、分类和文件夹数据的获取，我们采用了 `redux-toolkit` 中的 `RTK Query` 功能。这使得状态管理变得更加简洁高效，能够自动处理数据缓存、重新获取等常见场景。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **使用 RTK Query**：为了更好地管理服务器状态，所有的读操作（如获取博客、分类和文件夹列表）都是通过 RTK Query 实现的，这为我们的数据获取提供了强大的数据缓存和数据同步能力。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+对于博客的评论功能，我们使用了 `createAsyncThunk`：
 
-### `npm run eject`
+- **使用 createAsyncThunk**：对于需要异步逻辑和副作用管理的写操作（如提交新评论），我们采用了 `createAsyncThunk`。它允许我们定义一个异步函数，并自动生成 action creators 和 action types 来处理整个请求的生命周期。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 待优化的功能
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+以下是网站未来优化的一些计划：
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. 实现 react-router 的懒加载以优化页面加载时间。
+2. 对博客列表、文件夹列表、分类列表增加分页功能，以提高内容的可管理性。
+3. 添加评论回复功能，增强用户互动性。
+4. 对错误边界处理的反馈
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 联系方式
 
-## Learn More
+如果您有任何建议或问题，请通过以下方式与我联系：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 邮箱：`gamejoye@gmail.com`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+感谢您的访问，希望您在 GameJoye.top 有一个愉快的体验。
