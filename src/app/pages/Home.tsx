@@ -10,31 +10,28 @@ import {
 } from 'antd';
 import Dashboard from '../../common/components/Dashboard';
 import bg from '../../asserts/bg.jpeg';
-import { useGetBlogsQuery } from '../../features/blogs/blogsSlice';
-import { useGetFoldersQuery } from '../../features/folders/foldersSlice';
-import { useGetTagsQuery } from '../../features/tags/tagsSlice';
+import { useGetBlogsTotalCountQuery } from '../../features/blogs/blogsSlice';
+import { useGetFoldersTotalCountQuery } from '../../features/folders/foldersSlice';
+import { useGetTagsTotoalCountQuery } from '../../features/tags/tagsSlice';
 
 const { Paragraph, Link } = Typography;
 
 const Home = () => {
   const {
-    data: blogs = [],
+    data: blogsCount,
     isLoading: blogsLoading,
     isFetching: blogsFetching,
-  } = useGetBlogsQuery();
+  } = useGetBlogsTotalCountQuery();
   const {
-    data: folders = [],
+    data: foldersCount,
     isLoading: foldersLoading,
     isFetching: foldersFetching,
-  } = useGetFoldersQuery();
+  } = useGetFoldersTotalCountQuery();
   const {
-    data: tags = [],
+    data: tagsCount,
     isLoading: tagsLoading,
     isFetching: tagsFetching,
-  } = useGetTagsQuery();
-  const blogCount = blogs.length; // 博客数量
-  const tagCount = folders.length; // 标签数量
-  const folderCount = tags.length; // 文件夹数量
+  } = useGetTagsTotoalCountQuery();
 
   return (
     <Row>
@@ -62,7 +59,7 @@ const Home = () => {
             <Card hoverable>
               <Statistic
                 title="博客文章"
-                value={blogCount}
+                value={blogsCount}
                 loading={blogsLoading || blogsFetching}
               />
             </Card>
@@ -71,7 +68,7 @@ const Home = () => {
             <Card hoverable>
               <Statistic
                 title="标签种类"
-                value={tagCount}
+                value={tagsCount}
                 loading={tagsLoading || tagsFetching}
               />
             </Card>
@@ -80,7 +77,7 @@ const Home = () => {
             <Card hoverable>
               <Statistic
                 title="归档文件夹"
-                value={folderCount}
+                value={foldersCount}
                 loading={foldersLoading || foldersFetching}
               />
             </Card>

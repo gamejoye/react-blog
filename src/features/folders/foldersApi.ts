@@ -1,14 +1,13 @@
 import { IGetPagingData, IGetPagingQuery } from "../../common/types/api";
-import { IBlog } from "../../common/types/blog";
+import { IFolder } from "../../common/types/folder";
 import { urlQueryBuilder } from "../../common/utils/url-query-builder";
 import { api } from "../apiSlice";
-import { IGetBlogsQuery } from "./types";
 
-export async function getBlogsApi(
-  params: IGetPagingQuery & IGetBlogsQuery
-): Promise<IGetPagingData<IBlog>> {
+export async function getFoldersApi(
+  params: IGetPagingQuery
+): Promise<IGetPagingData<IFolder>> {
   const query = urlQueryBuilder(params);
-  const res = await api.get(`blogs?${query}`);
+  const res = await api.get(`folders?${query}`);
   const total = parseInt(res.headers['x-total-count'], 10);
   if (isNaN(total)) {
     throw new Error(

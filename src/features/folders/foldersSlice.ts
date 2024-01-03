@@ -1,14 +1,11 @@
-import { IFolder } from '../../common/types/folder';
 import { apiSlice } from '../apiSlice';
-
-type FoldersResponse = IFolder[];
 
 export const foldersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getFolders: builder.query<FoldersResponse, void>({
-      query: () => 'folders',
+    getFoldersTotalCount: builder.query<number, void>({
+      query: () => 'folders/count',
     }),
   }),
 });
 
-export const { useGetFoldersQuery } = foldersApiSlice;
+export const { useGetFoldersTotalCountQuery } = foldersApiSlice;

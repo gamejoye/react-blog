@@ -13,12 +13,16 @@ type IProps = {
   search: boolean;
   size?: 'small' | 'large' | 'default';
   handleOnPostClick: (blog: IBlog) => void;
+  targetFolder: string;
+  targetTag: string;
 };
 
-export const BlogList: React.FC<IProps> = ({
+export const BlogArticleList: React.FC<IProps> = ({
   search,
   size = 'default',
   handleOnPostClick,
+  targetFolder,
+  targetTag
 }) => {
   return (
     <ProList<IBlog>
@@ -30,15 +34,17 @@ export const BlogList: React.FC<IProps> = ({
       rowKey={"id"}
       search={search ? {} : false}
       request={async ({ current = 1, pageSize = 1, ...props }) => {
-        const { content = '' } = props;
         const params: IGetBlogsQuery & IGetPagingQuery = {
           _start: (current - 1) * pageSize,
           _end: current * pageSize,
           _order: 'DESC',
           _sort: 'createTime',
         };
-        if (content !== '') {
-          params['q'] = content;
+        if(targetTag !== '') {
+          params.tag = targetTag;
+        }
+        if(targetFolder !== '') {
+          params.folder = targetFolder;
         }
         return await getBlogsApi(params);
       }}

@@ -1,14 +1,11 @@
-import { ITag } from '../../common/types/tag';
 import { apiSlice } from '../apiSlice';
-
-type TagsResponse = ITag[];
 
 export const tagsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getTags: builder.query<TagsResponse, void>({
-      query: () => 'tags',
+    getTagsTotoalCount: builder.query<number, void>({
+      query: () => 'tags/count',
     }),
   }),
 });
 
-export const { useGetTagsQuery } = tagsApiSlice;
+export const { useGetTagsTotoalCountQuery } = tagsApiSlice;
