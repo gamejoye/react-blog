@@ -7,14 +7,14 @@ import {
   TagOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu } from 'antd';
+import { Button, Layout, Menu, Modal } from 'antd';
 import { ItemType, MenuItemType } from 'antd/es/menu/hooks/useItems';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GITHUB_URL } from '../constants/base';
 import useToken from 'antd/es/theme/useToken';
 import { useState } from 'react';
-import SearchModel from './SearchModel';
 import { IBlog } from '../types/blog';
+import { BlogList } from '../../features/blogs/BlogList';
 
 const items: ItemType<MenuItemType>[] = [
   {
@@ -105,19 +105,24 @@ const Nav = () => {
         搜索博客内容
       </Button>
       <Menu mode="horizontal" items={miscellaneousItems} />
-      <SearchModel
-        title="天天开心"
+      <Modal
+        title="要记得天天开心"
         footer={null}
         open={searchModalShow}
         onCancel={closeModal}
-        handleOnPostClick={handleOnPostClick}
         styles={{
           body: {
             maxHeight: '70vh',
             overflow: 'scroll',
           },
         }}
-      />
+      >
+        <BlogList
+          search={true}
+          size='small'
+          handleOnPostClick={handleOnPostClick}
+        />
+      </Modal>
     </Layout.Header>
   );
 };

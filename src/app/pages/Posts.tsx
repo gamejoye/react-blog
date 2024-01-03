@@ -1,20 +1,10 @@
-import { Row, Col, Typography, Space } from 'antd';
+import { Row, Col } from 'antd';
 import { useNavigate } from 'react-router';
-import { useGetBlogsQuery } from '../../features/blogs/blogsSlice';
-import BlogList from '../../common/components/BlogList';
-import { ContainerOutlined } from '@ant-design/icons';
 import Dashboard from '../../common/components/Dashboard';
 import { IBlog } from '../../common/types/blog';
+import { BlogList } from '../../features/blogs/BlogList';
 
 const Posts = () => {
-  const {
-    data: blogs = [],
-    isLoading,
-    isSuccess,
-    isFetching,
-    isError,
-    error,
-  } = useGetBlogsQuery();
   const navigate = useNavigate();
   const handleOnPostClick = (blog: IBlog) => {
     navigate(`/posts/${blog.id}`);
@@ -24,9 +14,8 @@ const Posts = () => {
       <Col offset={6} span={12}>
         <Dashboard title="博客列表" />
         <BlogList
-          blogs={blogs}
+          search={false}
           handleOnPostClick={handleOnPostClick}
-          isexpired={isFetching || isLoading}
         />
       </Col>
     </Row>
