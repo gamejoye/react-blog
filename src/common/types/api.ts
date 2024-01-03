@@ -5,10 +5,6 @@ export type IGetPagingQuery = {
   _order: 'ASC' | 'DESC';
 };
 
-export type IGetBlogsQuery = {
-  q?: string;
-}
-
 export type IGetPagingData<T> = {
   data: T[];
   total: number;
