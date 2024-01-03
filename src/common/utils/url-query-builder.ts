@@ -1,10 +1,6 @@
 export function urlQueryBuilder(
-  ...args: Array<[string, string | number | undefined | null]>
+  params: Record<string | number, string | number>
 ) {
-  const validArgs = args.filter(
-    ([argKey, argVal]) => argVal !== undefined && argVal !== null,
-  );
-  if (validArgs.length === 0) return '';
-  const queryArgs = validArgs.map(([argKey, argVal]) => argKey + '=' + argVal);
-  return queryArgs.join('&&');
+  const query = Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&');
+  return query;
 }
