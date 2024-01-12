@@ -5,13 +5,11 @@ export interface IPlatformProfile {
 
   platformUserId: number;
 
-  name: string;
+  username: string;
 
   avatarUrl: string;
 
-  createTime: string;
-
-  editTime?: string;
+  accessToken: string;
 }
 
 export type IPlatform = 'qq' | 'wechat' | 'github';

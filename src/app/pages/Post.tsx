@@ -114,11 +114,11 @@ const Post = () => {
       <Col offset={4} span={16}>
         <Comment
           style={commentEditorStyle}
-          author={account.platformProfile?.name}
+          author={account.username || account.platformProfile?.username}
           avatar={
             <Avatar
-              src={account.platformProfile?.avatarUrl}
-              alt={account.platformProfile?.name}
+              src={account.username || account.platformProfile?.avatarUrl}
+              alt={account.username || account.platformProfile?.username}
             />
           }
           content={

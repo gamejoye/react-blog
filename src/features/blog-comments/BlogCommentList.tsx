@@ -86,7 +86,7 @@ const BlogCommentList: React.FC<PropsWithChildren<IProps>> = ({
         renderItem={(comment) => (
           <Comment
             style={style}
-            author={comment.account.platformProfile.name}
+            author={comment.account.username || comment.account.platformProfile.username}
             avatar={<Avatar src={comment.account.platformProfile.avatarUrl} />}
             content={<p>{comment.content}</p>}
             datetime={showRelativeTime(comment.createTime)}
