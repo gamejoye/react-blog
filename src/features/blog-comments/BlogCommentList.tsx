@@ -11,6 +11,7 @@ import {
   selectBlogCommentsMoreByParentId,
   selectBlogCommentsStatus,
 } from './blogCommentsSelectors';
+import './index.css';
 
 type IProps = {
   blogId: number;
@@ -68,6 +69,8 @@ const BlogCommentList: React.FC<PropsWithChildren<IProps>> = ({
       </div>
     ) : null;
 
+  const LoadmorePlaceholder = isFetching ? <div style={{ height: '100px' }} /> : null;
+
   let content;
 
   if (isLoading) {
@@ -83,16 +86,18 @@ const BlogCommentList: React.FC<PropsWithChildren<IProps>> = ({
         dataSource={comments}
         locale={{ emptyText: <Empty description="还没有相关评论哦~" /> }}
         loadMore={Loadmore}
+        footer={LoadmorePlaceholder}
         renderItem={(comment) => (
           <Comment
             style={style}
+            className="fade-in"
             author={comment.account.username || comment.account.platformProfile.username}
             avatar={<Avatar src={comment.account.platformProfile.avatarUrl} />}
             content={<p>{comment.content}</p>}
             datetime={showRelativeTime(comment.createTime)}
             children={
               (comment as IBlogComment).replies !== undefined &&
-              (comment as IBlogComment).replies.length > 0 ? (
+                (comment as IBlogComment).replies.length > 0 ? (
                 <BlogCommentList blogId={blogId} parentCommentId={comment.id} />
               ) : null
             }

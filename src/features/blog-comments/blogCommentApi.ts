@@ -12,6 +12,7 @@ export async function getBlogCommentsByBlogIdApi(
 ): Promise<IGetBlogCommentsResponse> {
   const blogId = option.blogId;
   const queryOption = option.queryOption || {};
+  console.log('option: ', queryOption);
   const res = await api.get(
     `blogs/${blogId}/comments?${urlQueryBuilder(queryOption)}`,
   );
