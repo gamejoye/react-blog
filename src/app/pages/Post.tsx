@@ -117,7 +117,7 @@ const Post = () => {
           author={account.username || account.platformProfile?.username}
           avatar={
             <Avatar
-              src={account.username || account.platformProfile?.avatarUrl}
+              src={account.platformProfile?.avatarUrl}
               alt={account.username || account.platformProfile?.username}
             />
           }
