@@ -13,9 +13,7 @@ const Archives = () => {
     <Row>
       <Col offset={6} span={12}>
         <Dashboard title="归档" />
-        <FolderList
-          handleOnFolderClick={handleOnFolderClick}
-        />
+        <FolderList handleOnFolderClick={handleOnFolderClick} />
       </Col>
     </Row>
   );

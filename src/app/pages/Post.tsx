@@ -1,12 +1,4 @@
-import {
-  Row,
-  Col,
-  Typography,
-  Skeleton,
-  Card,
-  Avatar,
-  message,
-} from 'antd';
+import { Row, Col, Typography, Skeleton, Card, Avatar, message } from 'antd';
 import { useParams } from 'react-router';
 import { useGetBlogQuery } from '../../features/blogs/blogsSlice';
 import TagBar from '../../common/components/TagBar';
@@ -41,7 +33,9 @@ const Post = () => {
         </Col>
         <Row gutter={[16, 16]}>
           <Col span={18}>
-            <div dangerouslySetInnerHTML={{ __html: blog?.content || '' }}></div>
+            <div
+              dangerouslySetInnerHTML={{ __html: blog?.content || '' }}
+            ></div>
           </Col>
           <Col span={6}>
             <Row gutter={[16, 16]}>

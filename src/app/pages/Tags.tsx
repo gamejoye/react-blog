@@ -13,9 +13,7 @@ const Tags = () => {
     <Row>
       <Col offset={6} span={12}>
         <Dashboard title="标签" />
-        <TagList
-          handleOnTagClick={handleOnTagClick}
-        />
+        <TagList handleOnTagClick={handleOnTagClick} />
       </Col>
     </Row>
   );

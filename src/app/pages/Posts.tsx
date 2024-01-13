@@ -13,10 +13,7 @@ const Posts = () => {
     <Row>
       <Col offset={6} span={12}>
         <Dashboard title="博客列表" />
-        <BlogList
-          search={false}
-          handleOnPostClick={handleOnPostClick}
-        />
+        <BlogList search={false} handleOnPostClick={handleOnPostClick} />
       </Col>
     </Row>
   );
