@@ -3,15 +3,26 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import Home from './pages/Home';
-import App from './App';
-import Posts from './pages/Posts';
-import Archives from './pages/Archives';
-import Post from './pages/Post';
-import Tags from './pages/Tags';
-import AboutMe from './pages/AboutMe';
-import GithubAuthCallback from './pages/GithubAuthCallback';
-import ArticleDetails from './pages/ArticleDetails';
+import { Suspense, lazy } from 'react';
+// import Home from './pages/Home';
+const Home = lazy(() => import('./pages/Home'));
+// import App from './App';
+const App = lazy(() => import('./App'));
+// import Posts from './pages/Posts';
+const Posts = lazy(() => import('./pages/Posts'));
+// import Archives from './pages/Archives';
+const Archives = lazy(() => import('./pages/Archives'));
+// import Post from './pages/Post';
+const Post = lazy(() => import('./pages/Post'));
+// import Tags from './pages/Tags';
+const Tags = lazy(() => import('./pages/Tags'));
+// import AboutMe from './pages/AboutMe';
+const AboutMe = lazy(() => import('./pages/AboutMe'));
+// import GithubAuthCallback from './pages/GithubAuthCallback';
+const GithubAuthCallback = lazy(() => import('./pages/GithubAuthCallback'));
+// import ArticleDetails from './pages/ArticleDetails';
+const ArticleDetails = lazy(() => import('./pages/ArticleDetails'));
+
 const routers = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
