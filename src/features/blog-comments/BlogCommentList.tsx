@@ -69,7 +69,9 @@ const BlogCommentList: React.FC<PropsWithChildren<IProps>> = ({
       </div>
     ) : null;
 
-  const LoadmorePlaceholder = isFetching ? <div style={{ height: '100px' }} /> : null;
+  const LoadmorePlaceholder = isFetching ? (
+    <div style={{ height: '100px' }} />
+  ) : null;
 
   let content;
 
@@ -91,13 +93,16 @@ const BlogCommentList: React.FC<PropsWithChildren<IProps>> = ({
           <Comment
             style={style}
             className="fade-in"
-            author={comment.account.username || comment.account.platformProfile.username}
+            author={
+              comment.account.username ||
+              comment.account.platformProfile.username
+            }
             avatar={<Avatar src={comment.account.platformProfile.avatarUrl} />}
             content={<p>{comment.content}</p>}
             datetime={showRelativeTime(comment.createTime)}
             children={
               (comment as IBlogComment).replies !== undefined &&
-                (comment as IBlogComment).replies.length > 0 ? (
+              (comment as IBlogComment).replies.length > 0 ? (
                 <BlogCommentList blogId={blogId} parentCommentId={comment.id} />
               ) : null
             }

@@ -1,13 +1,13 @@
-import { ProList } from "@ant-design/pro-components";
-import { IBlog } from "../../common/types/blog";
-import { getBlogsApi } from "./blogsApi";
-import { Button, Space, Typography } from "antd";
-import IconText from "../../common/components/IconText";
-import { EyeTwoTone, MessageTwoTone } from "@ant-design/icons";
-import TagBar from "../../common/components/TagBar";
-import { IGetPagingQuery } from "../../common/types/api";
-import { stripHtml } from "../../common/utils/strip";
-import { IGetBlogsQuery } from "./types";
+import { ProList } from '@ant-design/pro-components';
+import { IBlog } from '../../common/types/blog';
+import { getBlogsApi } from './blogsApi';
+import { Button, Space, Typography } from 'antd';
+import IconText from '../../common/components/IconText';
+import { EyeTwoTone, MessageTwoTone } from '@ant-design/icons';
+import TagBar from '../../common/components/TagBar';
+import { IGetPagingQuery } from '../../common/types/api';
+import { stripHtml } from '../../common/utils/strip';
+import { IGetBlogsQuery } from './types';
 
 type IProps = {
   search: boolean;
@@ -22,7 +22,7 @@ export const BlogArticleList: React.FC<IProps> = ({
   size = 'default',
   handleOnPostClick,
   targetFolder,
-  targetTag
+  targetTag,
 }) => {
   return (
     <ProList<IBlog>
@@ -31,7 +31,7 @@ export const BlogArticleList: React.FC<IProps> = ({
         pageSize: 5,
       }}
       size={size}
-      rowKey={"id"}
+      rowKey={'id'}
       search={search ? {} : false}
       request={async ({ current = 1, pageSize = 1, ...props }) => {
         const params: IGetBlogsQuery & IGetPagingQuery = {
@@ -40,10 +40,10 @@ export const BlogArticleList: React.FC<IProps> = ({
           _order: 'DESC',
           _sort: 'createTime',
         };
-        if(targetTag !== '') {
+        if (targetTag !== '') {
           params.tag = targetTag;
         }
-        if(targetFolder !== '') {
+        if (targetFolder !== '') {
           params.folder = targetFolder;
         }
         return await getBlogsApi(params);
@@ -51,7 +51,7 @@ export const BlogArticleList: React.FC<IProps> = ({
       onRow={(blog) => {
         return {
           onClick: () => handleOnPostClick(blog),
-        }
+        };
       }}
       metas={{
         title: {
@@ -60,13 +60,10 @@ export const BlogArticleList: React.FC<IProps> = ({
         description: {
           search: false,
           render: (_, blog) => {
-            return (
-              blog.tags.length === 0 ? null : <TagBar
-                tags={blog.tags}
-                color="blue"
-              />
-            )
-          }
+            return blog.tags.length === 0 ? null : (
+              <TagBar tags={blog.tags} color="blue" />
+            );
+          },
         },
         content: {
           dataIndex: 'content',
@@ -75,16 +72,13 @@ export const BlogArticleList: React.FC<IProps> = ({
               <Typography.Paragraph ellipsis={{ rows: 2, symbol: 'more' }}>
                 {stripHtml(blog.content)}
               </Typography.Paragraph>
-            )
+            );
           },
         },
         actions: {
           render: (_, blog) => (
             <Space split>
-              <IconText
-                icon={MessageTwoTone}
-                text={blog.commentsCount + ''}
-              />
+              <IconText icon={MessageTwoTone} text={blog.commentsCount + ''} />
               <IconText icon={EyeTwoTone} text={blog.views + ''} />
             </Space>
           ),
@@ -93,13 +87,13 @@ export const BlogArticleList: React.FC<IProps> = ({
           search: false,
           render: (_: any, blog: IBlog) => {
             return (
-              <Button type='link' onClick={() => handleOnPostClick(blog)}>
+              <Button type="link" onClick={() => handleOnPostClick(blog)}>
                 View Post
               </Button>
-            )
-          }
-        }
+            );
+          },
+        },
       }}
     />
-  )
-}
+  );
+};

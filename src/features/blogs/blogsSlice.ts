@@ -15,6 +15,7 @@ export const blogsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetBlogsQuery, useGetBlogQuery, useGetBlogsTotalCountQuery } = blogsApiSlice;
+export const { useGetBlogsQuery, useGetBlogQuery, useGetBlogsTotalCountQuery } =
+  blogsApiSlice;
 
 // export const selectUsersResult = blogsApiSlice.endpoints.getUsers.select()

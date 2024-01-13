@@ -40,8 +40,8 @@ const items: ItemType<MenuItemType>[] = [
   {
     key: '/about/i',
     label: '关于我',
-    icon: <UserOutlined />
-  }
+    icon: <UserOutlined />,
+  },
 ];
 
 const miscellaneousItems: ItemType<MenuItemType>[] = [
@@ -119,7 +119,7 @@ const Nav = () => {
       >
         <BlogList
           search={true}
-          size='small'
+          size="small"
           handleOnPostClick={handleOnPostClick}
         />
       </Modal>

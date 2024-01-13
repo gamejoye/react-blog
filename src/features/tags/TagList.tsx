@@ -1,9 +1,9 @@
-import { ProList } from "@ant-design/pro-components";
-import { Button } from "antd";
-import { IGetPagingQuery } from "../../common/types/api";
-import { showRelativeTime } from "../../common/utils/dayjs";
-import { ITag } from "../../common/types/tag";
-import { getTagsApi } from "./tagsApi";
+import { ProList } from '@ant-design/pro-components';
+import { Button } from 'antd';
+import { IGetPagingQuery } from '../../common/types/api';
+import { showRelativeTime } from '../../common/utils/dayjs';
+import { ITag } from '../../common/types/tag';
+import { getTagsApi } from './tagsApi';
 
 type IProps = {
   size?: 'small' | 'large' | 'default';
@@ -20,7 +20,7 @@ export const TagList: React.FC<IProps> = ({
         pageSize: 10,
       }}
       size={size}
-      rowKey={"id"}
+      rowKey={'id'}
       request={async ({ current = 1, pageSize = 10, ...props }) => {
         const params: IGetPagingQuery = {
           _start: (current - 1) * pageSize,
@@ -37,21 +37,19 @@ export const TagList: React.FC<IProps> = ({
         description: {
           dataIndex: 'createTime',
           render(_, tag) {
-            return (
-              <span>{showRelativeTime(tag.createTime)}</span>
-            );
-          }
+            return <span>{showRelativeTime(tag.createTime)}</span>;
+          },
         },
         actions: {
           render: (_: any, tag: ITag) => {
             return (
-              <Button type='link' onClick={() => handleOnTagClick(tag)}>
+              <Button type="link" onClick={() => handleOnTagClick(tag)}>
                 View Detail
               </Button>
-            )
-          }
-        }
+            );
+          },
+        },
       }}
     />
-  )
-}
+  );
+};

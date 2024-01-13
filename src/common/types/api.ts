@@ -8,10 +8,10 @@ export type IGetPagingQuery = {
 export type IGetPagingData<T> = {
   data: T[];
   total: number;
-}
+};
 
 export type IResponse<T> = {
   code: number;
   data: T;
   success: boolean;
-}
+};
