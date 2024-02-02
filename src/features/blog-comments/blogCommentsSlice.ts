@@ -83,7 +83,6 @@ export const blogCommentsSlice = createSlice({
         blogCommentsAdapter.addMany(state, comments);
       })
       .addCase(fetchBlogComments.rejected, (state, action) => {
-        const { error } = action;
         state.status = 'failed';
       })
       .addCase(postBlogComment.pending, (state, action) => {

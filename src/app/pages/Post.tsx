@@ -16,7 +16,7 @@ const commentEditorStyle: React.CSSProperties = { padding: '0 8px' };
 const Post = () => {
   const { id } = useParams();
   const intId = parseInt(id || '');
-  const { data: blog, isLoading, isFetching, isError } = useGetBlogQuery(intId);
+  const { data: blog, isLoading, isFetching } = useGetBlogQuery(intId);
   const dispatch = useAppDispatch();
 
   let post;
@@ -62,7 +62,6 @@ const Post = () => {
     isFetching: isAccountFetching,
     isError: isAccountError,
     isSuccess: isAccountSuccess,
-    error,
   } = useGetAccountQuery();
   // console.log(account, isLoading, isFetching, isError, error);
 

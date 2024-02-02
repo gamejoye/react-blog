@@ -1,6 +1,4 @@
-import { GithubOutlined } from '@ant-design/icons';
-import { Alert, Button, Form, Input } from 'antd';
-import { PropsWithChildren } from 'react';
+import { Alert, Button, Input } from 'antd';
 import { GITHUB_AUTH_CALLBACK } from '../constants/base';
 
 type IEditorProps = {

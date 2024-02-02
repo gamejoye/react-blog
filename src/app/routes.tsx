@@ -3,7 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 // import Home from './pages/Home';
 const Home = lazy(() => import('./pages/Home'));
 // import App from './App';

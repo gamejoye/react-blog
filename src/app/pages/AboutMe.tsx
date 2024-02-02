@@ -4,7 +4,7 @@ import { MailOutlined, QqOutlined, TrophyOutlined } from '@ant-design/icons';
 import IconText from '../../common/components/IconText';
 import hg from '../../asserts/hg.jpeg';
 
-const { Paragraph, Text, Link } = Typography;
+const { Paragraph, Link } = Typography;
 
 const AboutMe = () => {
   return (

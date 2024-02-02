@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { Comment } from '@ant-design/compatible';
 import { Avatar, Button, Col, Empty, List, Row, Spin } from 'antd';
 import { showRelativeTime } from '../../common/utils/dayjs';

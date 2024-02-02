@@ -20,7 +20,7 @@ const GithubAuthCallback = () => {
       message.error('认证失败: ' + msg);
     }
     navigate('/');
-  }, []);
+  }, [location.search, navigate]);
   return <Spin spinning fullscreen />;
 };
 export default GithubAuthCallback;
